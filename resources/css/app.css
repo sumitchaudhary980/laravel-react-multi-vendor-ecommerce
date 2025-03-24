@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.wysiwyg-output > blockquote,
+.wysiwyg-output > dl,
+.wysiwyg-output > dd,
+.wysiwyg-output > h1,
+.wysiwyg-output > h2,
+.wysiwyg-output > h3,
+.wysiwyg-output > h4,
+.wysiwyg-output > h5,
+.wysiwyg-output > h6,
+.wysiwyg-output > hr,
+.wysiwyg-output > figure,
+.wysiwyg-output > p,
+.wysiwyg-output > pre {
+    margin: revert;
+}
+
+.wysiwyg-output > *:last-child {
+    margin-bottom: 0;
+}
+
+.wysiwyg-output > ol,
+.wysiwyg-output > ul {
+    list-style: revert;
+    margin: revert;
+    padding: revert;
+}
+
+.wysiwyg-output > table {
+    border-collapse: revert;
+}
+
+.wysiwyg-output > h1,
+.wysiwyg-output > h2,
+.wysiwyg-output > h3,
+.wysiwyg-output > h4,
+.wysiwyg-output > h5,
+.wysiwyg-output > h6 {
+    font-size: revert;
+    font-weight: revert;
+}
+
+.wysiwyg-output blockquote {
+    border-left: 5px solid #ccc;
+    font-style: italic;
+    margin-left: 0;
+    margin-right: 0;
+    overflow: hidden;
+    padding-left: 1.5em;
+    padding-right: 1.5em;
+}
+
+.wysiwyg-output a {
+    text-decoration: #4b9afa;
+    color: blue;
+}
+
+.wysiwyg-output a.hashtag {
+    background-color: #eaf4ff;
+    color: #4156e2;
+}
