@@ -62,7 +62,7 @@ class AddressController extends Controller
         $address->state = $request->input('state');
         $address->zip_code = $request->input('zip_code');
         $address->country = $request->input('country');
-        $address->isDefault = $request->boolean('is_default');
+        $address->isDefault = $address->isDefault;
         $address->delivery_instruction = $request->input('delivery_instruction', '');
 
         // Save the updated address
