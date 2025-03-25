@@ -50,6 +50,7 @@ class AuthenticatedSessionController extends Controller
     }
 
 
+
     /**
      * Destroy an authenticated session.
      */
