@@ -1,4 +1,12 @@
-import { FormEventHandler } from 'react';
+import {
+  FormEventHandler,
+  useState,
+} from 'react';
+
+import {
+  Eye,
+  EyeOff,
+} from 'lucide-react';
 
 import InputError from '@/Components/Core/InputError';
 import InputLabel from '@/Components/Core/InputLabel';
@@ -26,6 +34,8 @@ export default function Register() {
             onFinish: () => reset("password", "password_confirmation"),
         });
     };
+    const [showPassword, setShowPassword] = useState(false);
+    const [confirmShowPassword, setConfirmShowPassword] = useState(false);
 
     return (
         <AuthenticatedLayout>
@@ -85,24 +95,40 @@ export default function Register() {
                                 />
                             </div>
 
-                            <div className="mt-4">
+                            <div className="mt-4 block">
                                 <InputLabel
                                     htmlFor="password"
                                     value="Password"
                                 />
-
-                                <TextInput
-                                    id="password"
-                                    type="password"
-                                    name="password"
-                                    value={data.password}
-                                    className="mt-1 block w-full"
-                                    autoComplete="new-password"
-                                    onChange={(e) =>
-                                        setData("password", e.target.value)
-                                    }
-                                    required
-                                />
+                                <div className="relative">
+                                    <TextInput
+                                        id="password"
+                                        type={
+                                            showPassword ? "text" : "password"
+                                        }
+                                        name="password"
+                                        value={data.password}
+                                        className="mt-1 block w-full"
+                                        autoComplete="new-password"
+                                        onChange={(e) =>
+                                            setData("password", e.target.value)
+                                        }
+                                        required
+                                    />
+                                    <button
+                                        type="button"
+                                        onClick={() =>
+                                            setShowPassword(!showPassword)
+                                        }
+                                        className="absolute inset-y-0 right-2 flex items-center text-gray-400 hover:text-gray-600 dark:text-gray-400 dark:hover:text-white"
+                                    >
+                                        {showPassword ? (
+                                            <EyeOff size={20} />
+                                        ) : (
+                                            <Eye size={20} />
+                                        )}
+                                    </button>
+                                </div>
 
                                 <InputError
                                     message={errors.password}
@@ -110,28 +136,45 @@ export default function Register() {
                                 />
                             </div>
 
-                            <div className="mt-4">
+                            <div className="mt-4 block">
                                 <InputLabel
                                     htmlFor="password_confirmation"
                                     value="Confirm Password"
                                 />
-
-                                <TextInput
-                                    id="password_confirmation"
-                                    type="password"
-                                    name="password_confirmation"
-                                    value={data.password_confirmation}
-                                    className="mt-1 block w-full"
-                                    autoComplete="new-password"
-                                    onChange={(e) =>
-                                        setData(
-                                            "password_confirmation",
-                                            e.target.value
-                                        )
-                                    }
-                                    required
-                                />
-
+                                <div className="relative">
+                                    <TextInput
+                                        id="password_confirmation"
+                                        type={
+                                            confirmShowPassword
+                                                ? "text"
+                                                : "password"
+                                        }
+                                        name="password_confirmation"
+                                        value={data.password_confirmation}
+                                        className="mt-1 block w-full"
+                                        autoComplete="new-password"
+                                        onChange={(e) =>
+                                            setData(
+                                                "password_confirmation",
+                                                e.target.value
+                                            )
+                                        }
+                                        required
+                                    />
+                                    <button
+                                        type="button"
+                                        onClick={() =>
+                                            setConfirmShowPassword(!confirmShowPassword)
+                                        }
+                                        className="absolute inset-y-0 right-2 flex items-center text-gray-400 hover:text-gray-600 dark:text-gray-400 dark:hover:text-white"
+                                    >
+                                        {confirmShowPassword ? (
+                                            <EyeOff size={20} />
+                                        ) : (
+                                            <Eye size={20} />
+                                        )}
+                                    </button>
+                                </div>
                                 <InputError
                                     message={errors.password_confirmation}
                                     className="mt-2"

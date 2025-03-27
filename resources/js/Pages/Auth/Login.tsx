@@ -1,4 +1,12 @@
-import { FormEventHandler } from 'react';
+import {
+  FormEventHandler,
+  useState,
+} from 'react';
+
+import {
+  Eye,
+  EyeOff,
+} from 'lucide-react';
 
 import Checkbox from '@/Components/Core/Checkbox';
 import InputError from '@/Components/Core/InputError';
@@ -24,6 +32,7 @@ export default function Login({
         password: "",
         remember: false,
     });
+    const [showPassword, setShowPassword] = useState(false);
 
     const submit: FormEventHandler = (e) => {
         e.preventDefault();
@@ -69,28 +78,40 @@ export default function Login({
                                 />
                             </div>
 
-                            <div className="mt-4">
+                            <div className="mt-4 block">
                                 <InputLabel
                                     htmlFor="password"
                                     value="Password"
                                 />
+                                <div className="relative">
+                                    <TextInput
+                                        id="password"
+                                        type={
+                                            showPassword ? "text" : "password"
+                                        }
+                                        name="password"
+                                        value={data.password}
+                                        className="mt-1 block w-full pr-10"
+                                        autoComplete="current-password"
+                                        onChange={(e) =>
+                                            setData("password", e.target.value)
+                                        }
+                                    />
 
-                                <TextInput
-                                    id="password"
-                                    type="password"
-                                    name="password"
-                                    value={data.password}
-                                    className="mt-1 block w-full"
-                                    autoComplete="current-password"
-                                    onChange={(e) =>
-                                        setData("password", e.target.value)
-                                    }
-                                />
-
-                                <InputError
-                                    message={errors.password}
-                                    className="mt-2"
-                                />
+                                    <button
+                                        type="button"
+                                        onClick={() =>
+                                            setShowPassword(!showPassword)
+                                        }
+                                        className="absolute inset-y-0 right-2 flex items-center text-gray-400 hover:text-gray-600 dark:text-gray-400 dark:hover:text-white"
+                                        >
+                                        {showPassword ? (
+                                            <EyeOff size={20} />
+                                        ) : (
+                                            <Eye size={20} />
+                                        )}
+                                    </button>
+                                </div>
                             </div>
 
                             <div className="mt-4 block">
