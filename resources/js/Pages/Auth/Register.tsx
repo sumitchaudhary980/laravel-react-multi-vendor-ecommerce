@@ -164,7 +164,9 @@ export default function Register() {
                                     <button
                                         type="button"
                                         onClick={() =>
-                                            setConfirmShowPassword(!confirmShowPassword)
+                                            setConfirmShowPassword(
+                                                !confirmShowPassword
+                                            )
                                         }
                                         className="absolute inset-y-0 right-2 flex items-center text-gray-400 hover:text-gray-600 dark:text-gray-400 dark:hover:text-white"
                                     >

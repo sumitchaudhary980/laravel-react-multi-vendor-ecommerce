@@ -104,7 +104,7 @@ export default function Login({
                                             setShowPassword(!showPassword)
                                         }
                                         className="absolute inset-y-0 right-2 flex items-center text-gray-400 hover:text-gray-600 dark:text-gray-400 dark:hover:text-white"
-                                        >
+                                    >
                                         {showPassword ? (
                                             <EyeOff size={20} />
                                         ) : (
